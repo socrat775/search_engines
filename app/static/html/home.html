@@ -1,0 +1,14 @@
+{% extends "html/index.html" %}
+
+
+{% block content %}
+
+<form action="/search">
+    Введите запрос:
+    <input type="text" name="search_text"><br>
+    Кол-во результатов:
+    <input type="text" name="search_num" placeholder="1-100"><br>
+    <button type="submit">Поиск</button><br>
+</form>
+
+{% endblock %}

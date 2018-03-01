@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python3 main.py
+    ports:
+      - "9091:9091"

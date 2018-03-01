@@ -1,0 +1,29 @@
+{% extends "html/index.html" %}
+
+
+{% block content %}
+    <form action="/search">
+        Новый запрос:
+        <input type="text" name="search_text"><br>
+        Кол-во результатов:
+        {{ error_msg }}<br>
+        <input type="text" name="search_num" placeholder="1-100"><br>
+        <button type="submit">Поиск</button><br>
+    </form>
+
+    Result:
+    {% for schema in schemes %}
+        {% for shm_name, urls in schema.items() %}
+            <p><b>{{ shm_name }}</b></p>
+            {% for u in urls %}
+                <p>{{loop.index}}----------------------------------------------</p>
+                {% if u["path"] and u["name"]%}
+                    <p><a href='{{ u["path"] }}'>{{ u["name"] }}</a></p>
+                {% else %}
+                    <p>Sorry, we haven't parsed it</p>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
